@@ -1,0 +1,222 @@
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Formulario </title>
+<link rel="stylesheet" href="styles.css">
+
+<style>
+
+  /* Estilos para el formulario */
+
+  form 
+  {
+    background-color: orange; /* Color de fondo del formulario */
+    border: 2px solid blue; /* Borde azul */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espacio interior del formulario */
+    width: 50%; /* Ancho del formulario */
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+  }
+
+  /* Estilos para los campos de entrada */
+
+  input[type="text"], input[type="email"], input[type="tel"], textarea 
+  {
+    width: 100%; /* Ancho completo del campo de entrada */
+    padding: 10px; /* Espacio interno */
+    margin-bottom: 10px; /* Margen inferior */
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el borde y el relleno en el ancho total */
+  }
+
+  /* Estilos para los botones */
+
+  input[type="submit"], input[type="reset"], input[type="button"] 
+  {
+    width: auto; /* Ancho automático */
+    padding: 10px 20px; /* Relleno */
+    margin: 10px; /* Margen */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero */
+  }
+
+  /* Estilos específicos para el botón "Enviar" */
+
+  input[type="submit"] 
+  {
+    background-color: green; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+  }
+
+  /* Estilos específicos para el botón "Reiniciar" */
+
+  input[type="reset"] 
+  {
+    background-color: rgb(44, 86, 221); /* Color de fondo azul */
+    color: white; /* Color del texto blanco */
+  }
+
+  /* Estilos específicos para el botón "Cancelar" */
+
+  input[type="button"] 
+  {
+    background-color: rgb(240, 22, 15); /* Color de fondo rojo */
+    color: white; /* Color del texto blanco */
+  }
+
+  .estrella 
+  {
+            width: 40px;
+            cursor: pointer;
+  }
+
+</style>
+</head>
+<body>
+
+<form action="#" method="post">
+
+  <h2 style="text-align: center;"> Formulario Web </h2>
+
+  <label for="nombre">Nombre:</label><br>
+  <input type="text" id="nombre" name="nombre" required><br>
+
+  <label for="apellidos">Apellidos:</label><br>
+  <input type="text" id="apellidos" name="apellidos" required><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br>
+
+  <label for="telefono">Teléfono:</label><br>
+  <input type="tel" id="telefono" name="telefono" required><br>
+
+  <label for="asunto">Asunto:</label><br>
+  <input type="text" id="asunto" name="asunto" required><br>
+
+  <label for="mensaje">Mensaje:</label><br>
+  <textarea id="mensaje" name="mensaje" rows="4" required></textarea><br>
+
+
+  <div style="margin: 0 auto; width: fit-content;">
+
+    <img src="Imagenes/696c9a0017f6a8e9d35ae44817331e89.jpg" alt="Estrella" class="estrella" data-valor="1">
+    <img src="Imagenes/696c9a0017f6a8e9d35ae44817331e89.jpg" alt="Estrella" class="estrella" data-valor="2">
+    <img src="Imagenes/696c9a0017f6a8e9d35ae44817331e89.jpg" alt="Estrella" class="estrella" data-valor="3">
+    <img src="Imagenes/696c9a0017f6a8e9d35ae44817331e89.jpg" alt="Estrella" class="estrella" data-valor="4">
+    <img src="Imagenes/696c9a0017f6a8e9d35ae44817331e89.jpg" alt="Estrella" class="estrella" data-valor="5">
+
+</div>
+
+
+  <script>
+    const estrellas = document.querySelectorAll('.estrella');
+
+    estrellas.forEach((estrella, index) => 
+    {
+        let valoracion = 0;
+
+        estrella.addEventListener('mouseover', () => 
+        {
+            if (valoracion < 3) 
+            {
+                estrella.src = `Imagenes/Red-Star.png`;
+            }
+        });
+
+        estrella.addEventListener('mouseout', () =>
+        {
+            if (valoracion < 3) 
+            {
+                estrella.src = `Imagenes/696c9a0017f6a8e9d35ae44817331e89.jpg`;
+            }
+        });
+
+        estrella.addEventListener('click', () => 
+        {
+            valoracion++;
+
+            for (let i = 0; i <= index; i++)
+            {
+                estrellas[i].src = `Imagenes/green-star.png`;
+            }
+
+            for (let i = index + 1; i < estrellas.length; i++) 
+            {
+                estrellas[i].src = `Imagenes/696c9a0017f6a8e9d35ae44817331e89.jpg`;
+            }
+
+            console.log('Valoración:', valoracion);
+        });
+    });
+</script>
+
+  <div style="text-align: center;">
+
+    <input type="submit" value="Enviar">
+    <input type="reset" value="Reiniciar">
+    <input type="button" value="Cancelar">
+
+  </div>
+
+</form>
+
+<script>
+
+    function resaltar(num) 
+    {
+      for (let i = 1; i <= num; i++) 
+      {
+        document.querySelectorAll('.stars img')[i - 1].src = `Imagenes/Red-Star.png`;
+      }
+    }
+  
+    function restaurar(num) 
+    {
+      for (let i = num + 1; i <= 5; i++) 
+      {
+        document.querySelectorAll('.stars img')[i - 1].src = `Imagenes/696c9a0017f6a8e9d35ae44817331e89.jpg`;
+      }
+    }
+  
+    function valorar(valor) 
+    {
+      // Aquí puedes guardar el valor de la valoración y hacer lo que necesites con él
+      console.log(`El usuario valoró con ${valor} estrella(s).`);
+      for (let i = 1; i <= valor; i++) 
+      {
+        document.querySelectorAll('.stars img')[i - 1].src = `Imagenes/green-star.png`;
+      }
+      for (let i = valor + 1; i <= 5; i++) 
+      {
+        document.querySelectorAll('.stars img')[i - 1].src = `Imagenes/696c9a0017f6a8e9d35ae44817331e89.jpg`;
+      }
+    }
+  
+    function cancelar() 
+    {
+      // Implementa la lógica para cancelar aquí
+      console.log("Se ha cancelado el formulario.");
+    }
+  
+    function reiniciar() 
+    {
+      // Implementa la lógica para reiniciar aquí
+      console.log("Se ha reiniciado el formulario.");
+      document.getElementById("formulario").reset();
+      restaurar(0);
+    }
+  
+    function enviar() 
+    {
+      // Implementa la lógica para enviar el formulario aquí
+      console.log("Se ha enviado el formulario.");
+    }
+
+  </script>
+
+</body>
+</html>
